@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Para Mamá 🌸</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: linear-gradient(to right, #fbc2eb, #a6c1ee);
+      color: #4e342e;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    header {
+      background: rgba(255, 255, 255, 0.5);
+      padding: 2rem;
+      font-size: 2rem;
+      font-weight: bold;
+    }
+
+    .gallery {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 2rem;
+    }
+
+    .gallery img {
+      width: 250px;
+      border-radius: 20px;
+      transition: transform 0.3s ease;
+      box-shadow: 0 6px 10px rgba(0,0,0,0.3);
+    }
+
+    .gallery img:hover {
+      transform: scale(1.1) rotate(-2deg);
+    }
+
+    .message-box {
+      margin: 2rem auto;
+      max-width: 500px;
+      background-color: #fff3e0;
+      padding: 1.5rem;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      font-size: 1.2rem;
+    }
+
+    button {
+      margin-top: 1rem;
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+      background-color: #ffccbc;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #ffab91;
+    }
+
+    .petal {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      background-image: url('https://upload.wikimedia.org/wikipedia/commons/4/45/Emoji_u1f338.svg');
+      background-size: contain;
+      animation: fall linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(-10%) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+    }
+
+    footer {
+      margin-top: 3rem;
+      background-color: #e1bee7;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #6a1b9a;
+    }
+  </style>
+</head>
+<body>
+  <header>🌷 Mamá, eres la flor más hermosa del jardín 🌷</header>
+
+  <section class="gallery">
+    <img src="IMG_20221225_134106.jpg" alt="Foto 1">
+    <img src="IMG-20210720-WA0043.jpg" alt="Foto 2">
+    <img src="Mi imagen de ChatGPT.png" alt="Foto 3">
+  </section>
+
+  <section class="message-box" id="mensaje">
+    Haz clic en el botón para ver un mensaje sorpresa.  
+    <br>
+    <button onclick="mostrarMensaje()">Mostrar mensaje 💌</button>
+  </section>
+
+  <footer>Con todo el amor del mundo — Tu hija 💖</footer>
+
+  <script>
+    const mensajes = [
+      "Tu amor es el hilo invisible que me mantiene firme cada día.",
+      "Gracias por enseñarme a ver belleza en lo simple, como tú ves a los gatos.",
+      "Eres la melodía que nunca deja de sonar en mi corazón.",
+      "Si las flores hablaran, todas dirían tu nombre.",
+      "Mamá, cada latido mío guarda un pedacito de tu ternura."
+    ];
+
+    function mostrarMensaje() {
+      const mensaje = mensajes[Math.floor(Math.random() * mensajes.length)];
+      document.getElementById("mensaje").innerHTML = `
+        <p>${mensaje}</p>
+        <button onclick="mostrarMensaje()">Otro mensaje 💌</button>
+      `;
+    }
+
+    // Crear pétalos en caída
+    function crearPetalo() {
+      const petalo = document.createElement("div");
+      petalo.classList.add("petal");
+      petalo.style.left = Math.random() * 100 + "vw";
+      petalo.style.animationDuration = (3 + Math.random() * 5) + "s";
+      document.body.appendChild(petalo);
+      setTimeout(() => petalo.remove(), 8000);
+    }
+
+    setInterval(crearPetalo, 300);
+  </script>
+</body>
+</html>
