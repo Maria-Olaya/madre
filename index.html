@@ -11,7 +11,7 @@
       background: linear-gradient(to right, #fbc2eb, #a6c1ee);
       color: #4e342e;
       text-align: center;
-      overflow: hidden;
+      overflow-y: auto; /* Permite el desplazamiento vertical */
     }
 
     header {
@@ -31,6 +31,7 @@
 
     .gallery img {
       width: 250px;
+      max-width: 100%;
       border-radius: 20px;
       transition: transform 0.3s ease;
       box-shadow: 0 6px 10px rgba(0,0,0,0.3);
@@ -86,6 +87,39 @@
       padding: 1rem;
       font-size: 0.9rem;
       color: #6a1b9a;
+    }
+
+    /* Media Queries para pantallas más pequeñas */
+    @media (max-width: 768px) {
+      header {
+        font-size: 1.5rem;
+      }
+      .gallery img {
+        width: 200px; /* Ajustar el tamaño de las imágenes en pantallas más pequeñas */
+      }
+      .message-box {
+        font-size: 1rem;
+      }
+      button {
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header {
+        font-size: 1.2rem;
+      }
+      .gallery img {
+        width: 150px; /* Aún más pequeño en pantallas muy pequeñas */
+      }
+      .message-box {
+        font-size: 0.9rem;
+        padding: 1rem;
+      }
+      button {
+        padding: 0.6rem 1rem;
+        font-size: 0.8rem;
+      }
     }
   </style>
 </head>
